@@ -50,7 +50,8 @@
             <h1>Melampaui Batas, Mengukir Prestasi dari Jakarta Barat</h1>
             <p>Wadah resmi pembinaan olahraga disabilitas tingkat Kota Administrasi Jakarta Barat untuk melahirkan atlet potensial menuju panggung nasional dan dunia.</p>
             <div class="hero-buttons">
-                <a href="https://forms.google.com" target="_blank" class="btn-cta">Gabung Jadi Atlet</a>
+                <!-- Perbaikan: Mengubah tombol utama agar langsung mengarah ke bagian daftar Cabor Binaan -->
+                <a href="#cabor" class="btn-cta">Lihat Cabang Olahraga</a>
                 <a href="#sejarah" class="btn-secondary">Baca Sejarah</a>
             </div>
         </div>
@@ -151,7 +152,7 @@
                     <h4 style="margin-top: 20px; color: #333;">Pencapaian Utama</h4>
                     <p class="ketua-desc"><strong>🏅 Medali Perak PEPARNAS XVI Papua 2021</strong><br>
                     Yatimah berhasil mempersembahkan medali perak untuk kontingen DKI Jakarta pada ajang PEPARNAS XVI Papua 2021 melalui nomor lempar lembing putri kategori F57. Prestasi tersebut menjadi bukti nyata atas kerja keras, ketekunan, dan semangat pantang menyerah yang selalu beliau junjung tinggi dalam setiap perjalanan kariernya sebagai atlet.</p>
-                    <p class="ketua-desc" style="font-style: italic;">"Melalui pengalaman, prestasi, dan kepemimpinannya, Yatimah terus berkomitmen untuk memajukan olahraga disabilitas serta menginspirasi masyarakat bahwa keterbatasan bukanlah penghalang untuk meraih prestasi dan memberikan kontribusi terbaik bagi bangsa."</p>
+                    <p class="ketua-desc" style="font-style: italic;">"Melalui pengalaman, prestasi, and kepemimpinannya, Yatimah terus berkomitmen untuk memajukan olahraga disabilitas serta menginspirasi masyarakat bahwa keterbatasan bukanlah penghalang untuk meraih prestasi dan memberikan kontribusi terbaik bagi bangsa."</p>
                 </div>
             </div>
         </section>
@@ -233,7 +234,7 @@
         <!-- CABOR BINAAN -->
         <section class="main-content" id="cabor">
             <h2 class="section-title text-center">Cabang Olahraga Binaan</h2>
-            <p class="section-subtitle text-center">5 Cabor Unggulan Resmi yang Dikelola oleh NPC Jakarta Barat (Klik untuk info detail)</p>
+            <p class="section-subtitle text-center">5 Cabor Utama Resmi yang Dikelola oleh NPC Jakarta Barat (Klik untuk info detail)</p>
             
             <div class="cabor-grid">
                 <div class="cabor-card clickable-card" onclick="openModal('modal-atletik')">
@@ -300,8 +301,8 @@
             
             <div style="max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 15px;">
                 <details style="background: var(--card-bg); padding: 15px 20px; border: 1px solid var(--border-color); border-radius: 8px; cursor: pointer;">
-                    <summary style="font-weight: bold; color: var(--primary-color); font-size: 1rem;">Bagaimana cara mendaftar menjadi atlet binaan?</summary>
-                    <p style="margin-top: 12px; color: #4b5563; line-height: 1.6; text-align: justify;">Anda bisa mengklik tombol "Gabung Jadi Atlet" di bagian atas halaman untuk mengisi formulir digital, atau datang langsung ke kantor sekretariat kami di GOR Jakarta Barat dengan membawa kartu identitas dan riwayat rekam medis disabilitas.</p>
+                    <summary style="font-weight: bold; color: var(--primary-color); font-size: 1rem;">Bagaimana jika ingin ikut bergabung atau mendaftar?</summary>
+                    <p style="margin-top: 12px; color: #4b5563; line-height: 1.6; text-align: justify;">Anda bisa langsung datang ke kantor sekretariat kami di GOR Jakarta Barat dengan membawa kartu identitas dan riwayat rekam medis disabilitas, atau berkonsultasi terlebih dahulu dengan menekan tombol WhatsApp Chat Admin di pojok kanan bawah halaman.</p>
                 </details>
 
                 <details style="background: var(--card-bg); padding: 15px 20px; border: 1px solid var(--border-color); border-radius: 8px; cursor: pointer;">
@@ -461,17 +462,80 @@
         </div>
     </div>
 
-    <!-- JAVASCRIPT UNTUK MODAL -->
     <script>
-        function openModal(modalId) {
-            document.getElementById(modalId).classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-        function closeModal(modalId) {
-            document.getElementById(modalId).classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
-    </script>
+        /* ==========================================================================
+           CONFIG BACKEND (SUPABASE API COUPLING)
+           ========================================================================== */
+        const SUPABASE_URL = "https://pbaxgbsodjtdsyczhdac.supabase.co";
+        // Menggunakan Anon Key (Bukan Service Role) demi keamanan browser klien
+        const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBiYXhnYnNvZGp0ZHN5Y3poZGFjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM1MjExNTgsImV4cCI6MjA5OTA5NzE1OH0.C3nFARC1WcZNdjumLA75IYQ-L4laXRkTWXGQSItL6sM";
 
-</body>
-</html>
+        // Event Listener untuk penanganan Form Pendaftaran
+        const formAtlet = document.getElementById('formAtlet');
+        if (formAtlet) {
+            formAtlet.addEventListener('submit', async (e) => {
+                e.preventDefault();
+
+                const nama = document.getElementById('nama').value;
+                const wa = document.getElementById('wa').value;
+                const disabilitas = document.getElementById('disabilitas').value;
+
+                try {
+                    const response = await fetch(`${SUPABASE_URL}/rest/v1/pendaftar_atlet`, {
+                        method: 'POST',
+                        headers: {
+                            'apikey': SUPABASE_ANON_KEY,
+                            'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+                            'Content-Type': 'application/json',
+                            'Prefer': 'return=minimal'
+                        },
+                        body: JSON.stringify({
+                            nama_lengkap: nama,
+                            nomor_wa: wa,
+                            jenis_disabilitas: disabilitas
+                        })
+                    });
+
+                    if (response.ok) {
+                        const pesanSukses = document.getElementById('pesanSukses');
+                        if (pesanSukses) pesanSukses.style.display = 'block';
+                        formAtlet.reset();
+                    } else {
+                        alert('Gagal mengirim data. Pastikan Row Level Security (RLS) di Supabase sudah dimatikan.');
+                    }
+                } catch (error) {
+                    console.error('Error REST API:', error);
+                    alert('Terjadi gangguan koneksi internet.');
+                }
+            });
+        }
+
+        /* ==========================================================================
+           FUNGSI OPERASIONAL MODAL (POP-UP)
+           ========================================================================== */
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Mengunci scroll latar belakang
+            }
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto'; // Mengembalikan scroll semula
+            }
+        }
+
+        // Fitur Aksesibilitas: Menutup modal dengan tombol 'Esc' keyboard
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                const activeModal = document.querySelector('.modal-overlay.active');
+                if (activeModal) {
+                    closeModal(activeModal.id);
+                }
+            }
+        });
+    </script>
