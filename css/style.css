@@ -1,0 +1,464 @@
+/* ==========================================================================
+   GLOBAL STYLES (DIPAKAI DI SEMUA HALAMAN)
+   Ubah warna utama, latar belakang, dan ukuran font dasar di sini.
+   ========================================================================== */
+:root {
+    --bg-color: #ffffff;
+    --text-color: #1f2937;
+    --primary-color: #0055b8; /* WARNA TEMA UTAMA (BIRU) */
+    --accent-color: #e60000;  /* WARNA TEMA KEDUA (MERAH) */
+    --card-bg: #f8fafc;
+    --border-color: #e2e8f0;
+    --footer-bg: #111827;
+    --footer-text: #9ca3af;
+    --font-size-base: 16px;
+}
+
+body.high-contrast {
+    --bg-color: #000000;
+    --text-color: #ffff00;
+    --primary-color: #ffff00;
+    --accent-color: #ffffff;
+    --card-bg: #121212;
+    --border-color: #ffff00;
+    --footer-bg: #000000;
+    --footer-text: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', -apple-system, Arial, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-size: var(--font-size-base);
+    line-height: 1.7;
+}
+
+.wrapper {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ==========================================================================
+   HEADER, NAVIGASI & FOOTER (DIPAKAI DI SEMUA HALAMAN)
+   ========================================================================== */
+
+/* --- BAGIAN HEADER & LOGO --- */
+header {
+    background-color: var(--bg-color);
+    padding: 15px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 3px solid var(--primary-color);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+}
+
+.logo {
+    font-size: 1.25rem;
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-bold { color: var(--accent-color); font-weight: 900; }
+
+.logo-img {
+    width: 45px; 
+    height: auto; 
+    object-fit: contain; 
+}
+
+/* --- BAGIAN NAVIGASI MENU --- */
+nav { display: flex; align-items: center; }
+
+nav a, .dropdown-btn {
+    color: var(--text-color);
+    text-decoration: none;
+    padding: 10px 15px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+nav a:hover, .dropdown-btn:hover { color: var(--primary-color); }
+.dropdown { position: relative; display: inline-block; }
+.arrow { font-size: 0.7rem; margin-left: 3px; }
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: var(--bg-color);
+    min-width: 210px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.1);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    top: 100%;
+    left: 0;
+}
+
+.dropdown-content a {
+    color: var(--text-color);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-transform: none;
+    font-weight: 500;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.dropdown-content a:last-child { border-bottom: none; }
+.dropdown:hover .dropdown-content { display: block; }
+
+/* --- BAGIAN FOOTER --- */
+footer { background-color: var(--footer-bg); color: var(--footer-text); padding: 45px 8% 20px; margin-top: 50px;}
+.footer-container { display: flex; flex-wrap: wrap; gap: 30px; justify-content: space-between; }
+.footer-brand, .footer-links, .footer-contact { flex: 1; min-width: 220px; }
+footer h3, footer h4 { color: white; margin-bottom: 12px; }
+.footer-links a { display: block; color: var(--footer-text); text-decoration: none; margin-bottom: 8px; transition: color 0.2s ease; }
+.footer-links a:hover { color: white; }
+.footer-bottom { text-align: center; padding-top: 20px; border-top: 1px solid #2d3748; margin-top: 30px; font-size: 0.85rem; }
+
+/* ==========================================================================
+   1. HALAMAN BERANDA (index.html)
+   ========================================================================== */
+
+/* --- HERO BANNER UTAMA --- */
+.hero {
+    padding: 120px 20px;
+    background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), 
+                url('../assets/gambar-beranda.jpeg') no-repeat center/cover;
+    color: white;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.hero-content { max-width: 800px; margin: 0 auto; }
+.hero h1 { font-size: 2.5rem; margin-bottom: 15px; line-height: 1.3; }
+.hero p { font-size: 1.1rem; margin-bottom: 25px; opacity: 0.9; }
+
+.hero-badge {
+    background-color: var(--accent-color);
+    padding: 4px 12px;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-radius: 4px;
+    display: inline-block;
+    margin-bottom: 15px;
+    letter-spacing: 0.5px;
+}
+
+.hero-buttons .btn-cta {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 12px 25px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 4px;
+    margin-right: 10px;
+    transition: background 0.2s ease;
+}
+.hero-buttons .btn-cta:hover { background-color: #004494; }
+
+.hero-buttons .btn-secondary {
+    display: inline-block;
+    padding: 12px 25px;
+    border: 2px solid white;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+.hero-buttons .btn-secondary:hover { background-color: white; color: #111827; }
+
+
+/* ==========================================================================
+   2. HALAMAN TENTANG & ORGANISASI (tentang.html)
+   ========================================================================== */
+
+.main-content { padding: 60px 0; scroll-margin-top: 80px; }
+.text-center { text-align: center; }
+.section-title { font-size: 2rem; color: var(--primary-color); margin-bottom: 8px; text-transform: uppercase; }
+.section-subtitle { color: #6b7280; margin-bottom: 35px; font-size: 1rem; }
+
+/* --- KOTAK SEJARAH & VISI MISI --- */
+.history-box, .vision-mission-box {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    padding: 35px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.history-box p { margin-bottom: 15px; text-align: justify; }
+
+.history-highlight {
+    background-color: var(--bg-color);
+    border-left: 5px solid var(--accent-color); 
+    padding: 20px;
+    margin-top: 25px;
+    border-radius: 0 6px 6px 0;
+}
+.history-highlight h4 { color: var(--primary-color); margin-bottom: 8px; }
+
+.vision-card h3, .mission-card h3 { color: var(--accent-color); margin-bottom: 10px; }
+.vision-card p { font-style: italic; font-size: 1.05rem; }
+.divider { margin: 25px 0; border: 0; border-top: 1px solid var(--border-color); }
+.mission-card ol { padding-left: 20px; }
+.mission-card li { margin-bottom: 10px; }
+
+/* --- PROFIL KETUA CABANG --- */
+.ketua-box {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 30px;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    padding: 35px;
+    border-radius: 8px;
+}
+
+.ketua-avatar {
+    background-color: var(--border-color);
+    width: 140px; 
+    height: 140px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    overflow: hidden; 
+    border: 4px solid var(--primary-color); 
+    flex-shrink: 0;
+}
+
+.ketua-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+}
+
+.ketua-info { flex: 1; min-width: 250px; }
+.ketua-info h3 { color: var(--primary-color); font-size: 1.6rem; margin-bottom: 4px; }
+.title-sub { color: var(--accent-color); font-weight: bold; font-size: 0.95rem; margin-bottom: 15px; }
+.ketua-desc { text-align: justify; font-size: 1rem; margin-bottom: 12px; }
+
+/* --- TABEL DEPARTEMEN ORGANISASI --- */
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+}
+
+.pengurus-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--bg-color);
+}
+
+.pengurus-table th, .pengurus-table td {
+    padding: 14px 18px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.pengurus-table th {
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+body.high-contrast .pengurus-table th {
+    background-color: var(--border-color);
+    color: #000000;
+}
+
+.pengurus-table tr:nth-child(even) { background-color: var(--card-bg); }
+.table-group-title { background-color: #f1f5f9 !important; }
+body.high-contrast .table-group-title { background-color: #222222 !important;}
+
+.table-group-title td {
+    font-weight: 800;
+    color: var(--text-color);
+    font-size: 1rem;
+    border-left: 4px solid var(--accent-color);
+}
+.pengurus-table td small { color: #6b7280; }
+body.high-contrast .pengurus-table td small { color: #ffffff; }
+
+
+/* ==========================================================================
+   3. HALAMAN CABANG OLAHRAGA & KLASIFIKASI DISABILITAS
+   ========================================================================== */
+
+.cabor-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+.cabor-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    padding: 35px 25px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+
+.cabor-icon { font-size: 2.8rem; margin-bottom: 15px; display: inline-block; }
+.cabor-card h3 { color: var(--primary-color); font-size: 1.3rem; margin-bottom: 12px; }
+.cabor-card p { font-size: 0.95rem; color: #4b5563; line-height: 1.6; }
+body.high-contrast .cabor-card p { color: #ffff00; }
+
+/* Efek Hover Dinamis Kartu Cabor */
+.clickable-card {
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.clickable-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+}
+
+.btn-detail-trigger {
+    color: #3498db;
+    font-size: 0.85rem;
+    font-weight: bold;
+    display: block;
+    margin-top: 15px;
+    transition: color 0.2s ease;
+}
+
+.clickable-card:hover .btn-detail-trigger {
+    color: var(--primary-color);
+    text-decoration: underline;
+}
+
+
+/* ==========================================================================
+   CSS POPUP MODAL (DESAIN PROFESIONAL FIX)
+   ========================================================================== */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(15, 23, 42, 0.7); 
+    backdrop-filter: blur(5px); 
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal-overlay.active {
+    display: flex;
+    opacity: 1;
+}
+
+.modal-box {
+    background: #ffffff;
+    padding: 40px 30px;
+    border-radius: 16px; 
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.2);
+    position: relative;
+    transform: translateY(20px) scale(0.95);
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.modal-overlay.active .modal-box {
+    transform: translateY(0) scale(1);
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: #f1f5f9;
+    border: none;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #64748b;
+    transition: all 0.2s ease;
+    line-height: 1;
+}
+
+.modal-close-btn:hover {
+    background: #ffe4e6;
+    color: var(--accent-color);
+}
+
+
+/* ==========================================================================
+   MEDIA QUERIES (OTOMATIS RAPI DI HP)
+   ========================================================================== */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px 20px;
+    }
+    
+    nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 5px;
+    }
+    
+    nav a, .dropdown-btn {
+        padding: 6px 10px;
+        font-size: 0.8rem;
+    }
+
+    .hero h1 { font-size: 1.8rem; }
+    .hero p { font-size: 1rem; }
+    
+    .ketua-box {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+    }
+    
+    .ketua-avatar { margin: 0 auto; }
+    .history-box, .vision-mission-box { padding: 20px; }
+    .cabor-grid { grid-template-columns: 1fr; }
+}
