@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+
     <header>
         <a href="index.html" class="logo" aria-label="Halaman Utama NPC Jakarta Barat">
             <img src="assets/logo.png" alt="Logo NPC Jakarta Barat" class="logo-img">
@@ -57,6 +58,7 @@
 
     <main class="wrapper">
         
+        <!-- SEJARAH -->
         <section class="main-content" id="sejarah">
             <h2 class="section-title text-center">SEJARAH NPC JAKARTA BARAT</h2>
             <p class="section-subtitle text-center">Perjalanan Gerakan Paralimpik di Indonesia hingga Tingkat Kota Administrasi</p>
@@ -73,11 +75,12 @@
 
                 <div class="history-highlight">
                     <h4>Dukungan dan Fasilitas</h4>
-                    <p>Pemerintah Kota Administrasi Jakarta Barat bersama Suku Dinas Pemuda dan Olahraga (Sudinpora) terus memberikan dukungan penuh bagi atlet NPC, termasuk penyediaan fasilitas kesehatan, lokasi latihan, dan dukungan dana pembinaan. Pelatihan klasifikasi disabilitas juga secara berkala dilakukan agar para atlet memenuhi syarat untuk mengikuti kompetisi resmi.</p>
+                    <p>Pemerintah Kota Administrasi Jakarta Barat bersama Suku Dinas Pemuda dan Olahraga (Sudinpora) terus memberikan dukungan penuh bagi atlet NPC, termasuk penyediaan fasilitas kesehatan, lokasi latihan, and dukungan dana pembinaan. Pelatihan klasifikasi disabilitas juga secara berkala dilakukan agar para atlet memenuhi syarat untuk mengikuti kompetisi resmi.</p>
                 </div>
             </div>
         </section>
 
+        <!-- VISI MISI -->
         <section class="main-content" id="visi-misi">
             <h2 class="section-title text-center">Visi & Misi</h2>
             <p class="section-subtitle text-center">NPC Kota Administrasi Jakarta Barat</p>
@@ -100,6 +103,7 @@
             </div>
         </section>
 
+        <!-- KLASIFIKASI -->
         <section class="main-content" id="klasifikasi">
             <h2 class="section-title text-center">KLASIFIKASI DISABILITAS</h2>
             <p class="section-subtitle text-center">Pengelompokan Kategori Atlet dalam Gerakan Olahraga Paralimpik (Klik untuk info detail)</p>
@@ -128,6 +132,7 @@
             </div>
         </section>
 
+        <!-- PROFIL KETUA -->
         <section class="main-content" id="profil-ketua">
             <h2 class="section-title text-center">Profil Ketua Umum</h2>
             <p class="section-subtitle text-center">Pimpinan Pengurus Cabang NPC Kota Administrasi Jakarta Barat</p>
@@ -151,6 +156,7 @@
             </div>
         </section>
 
+        <!-- ORGANISASI -->
         <section class="main-content" id="organisasi">
             <h2 class="section-title text-center">Organisasi & Departemen</h2>
             <p class="section-subtitle text-center">Susunan Kepengurusan Cabang (PENGCAB) NPC Kota Jakarta Barat Masa Bakti 2024 - 2029</p>
@@ -224,6 +230,7 @@
             </div>
         </section>
 
+        <!-- CABOR BINAAN -->
         <section class="main-content" id="cabor">
             <h2 class="section-title text-center">Cabang Olahraga Binaan</h2>
             <p class="section-subtitle text-center">5 Cabor Unggulan Resmi yang Dikelola oleh NPC Jakarta Barat (Klik untuk info detail)</p>
@@ -262,6 +269,7 @@
             </div>
         </section>
 
+        <!-- GALERI -->
         <section class="main-content" id="galeri">
             <h2 class="section-title text-center">DOKUMENTASI LATIHAN ATLET</h2>
             <p class="section-subtitle text-center">Potret Semangat & Kegiatan Pelatihan Rutin NPC Jakarta Barat</p>
@@ -285,6 +293,7 @@
             </div>
         </section>
 
+        <!-- FAQ -->
         <section class="main-content" id="faq" style="border-top: 1px solid var(--border-color); padding-top: 50px;">
             <h2 class="section-title text-center">Pertanyaan Umum (FAQ)</h2>
             <p class="section-subtitle text-center">Segala hal yang sering ditanyakan mengenai NPC Jakarta Barat</p>
@@ -307,6 +316,7 @@
             </div>
         </section>
 
+        <!-- SPONSOR / SINERGI -->
         <section class="main-content" style="padding: 40px 0 20px 0; border-top: 1px solid var(--border-color); margin-top: 40px;">
             <p style="text-align: center; font-weight: bold; color: #9ca3af; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; margin-bottom: 25px;">Didukung oleh / Sinergi Instansi</p>
             <div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 40px; opacity: 0.6; filter: grayscale(100%);">
@@ -348,12 +358,14 @@
         </div>
     </footer>
 
+    <!-- TOMBOL WA -->
     <a href="https://wa.me/6281234567890?text=Halo%20Admin%20NPC%20Jakarta%20Barat,%20saya%20ingin%20bertanya%20mengenai..." 
        style="position: fixed; bottom: 25px; left: 25px; background-color: #25d366; color: white; padding: 12px 22px; border-radius: 50px; text-decoration: none; font-weight: bold; box-shadow: 0 4px 15px rgba(0,0,0,0.2); z-index: 9999; display: flex; align-items: center; gap: 8px; font-size: 0.9rem;" 
        target="_blank" rel="noopener">
-       <i class="fa-brands fa-whatsapp" style="font-size: 1.3rem;"></i> Tanya Admin via WA
+        <i class="fa-brands fa-whatsapp" style="font-size: 1.3rem;"></i> Tanya Admin via WA
     </a>
 
+    <!-- MODAL POPUP -->
     <div class="modal-overlay" id="modal-daksa" onclick="closeModal('modal-daksa')">
         <div class="modal-box" onclick="event.stopPropagation()">
             <button class="modal-close-btn" onclick="closeModal('modal-daksa')">&times;</button>
@@ -384,7 +396,7 @@
             <div style="text-align: center;">
                 <div style="font-size: 3rem; margin-bottom: 10px;"><i class="fa-solid fa-brain" style="color: #0055b8;"></i></div>
                 <h3 class="modal-title">Disabilitas Grahita (Intelektual)</h3>
-                <p class="modal-desc" style="text-align: justify;">Mencakup atlet dengan keterbatasan fungsi intelektual and perilaku adaptif secara signifikan yang muncul sebelum usia 18 tahun. Latihan difokuskan pada pengulangan instruksi, pembentukan rutinitas, dan pendampingan psikologis khusus.</p>
+                <p class="modal-desc" style="text-align: justify;">Mencakup atlet dengan keterbatasan fungsi intelektual dan perilaku adaptif secara signifikan yang muncul sebelum usia 18 tahun. Latihan difokuskan pada pengulangan instruksi, pembentukan rutinitas, dan pendampingan psikologis khusus.</p>
                 <button class="btn-modal-close" onclick="closeModal('modal-grahita')">Tutup Jendela</button>
             </div>
         </div>
@@ -444,12 +456,11 @@
             <div style="text-align: center;">
                 <div style="font-size: 3rem; margin-bottom: 10px;">🏊‍♂️</div>
                 <h3 class="modal-title">Renang (Para Swimming)</h3>
-                <p class="modal-desc" style="text-align: justify;">Pelatihan difokuskan pada adaptasi air, gaya bebas, dada, punggung, dan kupu-kupu tanpa menggunakan alat bantu seperti pelampung atau kaki katak. Aturan start dimodifikasi (bisa dari balok start atau dari dalam air) menyesuaikan kondisi fisik atlet.</p>
+                <p class="modal-desc" style="text-align: justify;">Pembinaan teknik gaya bebas, dada, punggung, dan kupu-kupu yang disesuaikan dengan kemampuan fungsional tubuh masing-masing perenang.</p>
                 <button class="btn-modal-close" onclick="closeModal('modal-renang')">Tutup Jendela</button>
             </div>
         </div>
     </div>
 
-    <script src="js/script.js"></script>
 </body>
 </html>
