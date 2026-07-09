@@ -614,75 +614,570 @@ footer h3, footer h4 {
     font-size: 0.85rem; 
 }
 
-/* ==========================================
-   MEDIA QUERY: KHUSUS TAMPILAN HP (MOBILE OPTIMIZED)
-   ========================================== */
+/* ==========================================================================
+   GLOBAL STYLES & VARIABEL (DIPAKAI DI SEMUA HALAMAN)
+   ========================================================================== */
+:root {
+    --bg-color: #ffffff;
+    --text-color: #1f2937;
+    --primary-color: #0055b8; 
+    --accent-color: #e60000;  
+    --card-bg: #f8fafc;
+    --border-color: #e2e8f0;
+    --footer-bg: #111827;
+    --footer-text: #9ca3af;
+    --font-size-base: 16px;
+}
+
+body.high-contrast {
+    --bg-color: #000000;
+    --text-color: #ffff00;
+    --primary-color: #ffff00;
+    --accent-color: #ffffff;
+    --card-bg: #121212;
+    --border-color: #ffff00;
+    --footer-bg: #000000;
+    --footer-text: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', -apple-system, Arial, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-size: var(--font-size-base);
+    line-height: 1.7;
+}
+
+.wrapper {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ==========================================================================
+   HEADER, NAVIGASI & DROPDOWN MENU (DESKTOP INTERFACE)
+   ========================================================================== */
+header {
+    background-color: var(--bg-color);
+    padding: 15px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 3px solid var(--primary-color);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+}
+
+.logo {
+    font-size: 1.25rem;
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-bold { 
+    color: var(--accent-color); 
+    font-weight: 900; 
+}
+
+.logo-img {
+    width: 45px; 
+    height: auto; 
+    object-fit: contain; 
+}
+
+/* Tombol kontrol menu mobile (Disembunyikan default di desktop) */
+.menu-toggle, .menu-close {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--text-color);
+    cursor: pointer;
+}
+
+nav { 
+    display: flex; 
+    align-items: center; 
+}
+
+nav a, .dropdown-btn {
+    color: var(--text-color);
+    text-decoration: none;
+    padding: 10px 15px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+nav a:hover, .dropdown-btn:hover { 
+    color: var(--primary-color); 
+}
+
+.dropdown { 
+    position: relative; 
+    display: inline-block; 
+}
+
+.arrow { 
+    font-size: 0.7rem; 
+    margin-left: 3px; 
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: var(--bg-color);
+    min-width: 210px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.1);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    top: 100%;
+    left: 0;
+    z-index: 1100;
+}
+
+.dropdown-content a {
+    color: var(--text-color);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-transform: none;
+    font-weight: 500;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.dropdown-content a:last-child { 
+    border-bottom: none; 
+}
+
+.dropdown:hover .dropdown-content { 
+    display: block; 
+}
+
+/* ==========================================================================
+   HERO BANNER UTAMA
+   ========================================================================== */
+.hero {
+    padding: 120px 20px;
+    background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), 
+                url('../assets/gambar-beranda.jpeg') no-repeat center/cover;
+    color: white;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.hero-content { 
+    max-width: 800px; 
+    margin: 0 auto; 
+}
+
+.hero h1 { 
+    font-size: 2.5rem; 
+    margin-bottom: 15px; 
+    line-height: 1.3; 
+}
+
+.hero p { 
+    font-size: 1.1rem; 
+    margin-bottom: 25px; 
+    opacity: 0.9; 
+}
+
+.hero-badge {
+    background-color: var(--accent-color);
+    padding: 4px 12px;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-radius: 4px;
+    display: inline-block;
+    margin-bottom: 15px;
+    letter-spacing: 0.5px;
+}
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.hero-buttons .btn-cta {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 12px 25px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 4px;
+    transition: background 0.2s ease;
+}
+.hero-buttons .btn-cta:hover { 
+    background-color: #004494; 
+}
+
+.hero-buttons .btn-secondary {
+    padding: 12px 25px;
+    border: 2px solid white;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+.hero-buttons .btn-secondary:hover { 
+    background-color: white; 
+    color: #111827; 
+}
+
+/* ==========================================================================
+   MAIN LAYOUT & CARDS GRID SYSTEM
+   ========================================================================== */
+.main-content { 
+    padding: 60px 0; 
+    scroll-margin-top: 80px; 
+}
+
+.text-center { text-align: center; }
+
+.section-title { 
+    font-size: 2rem; 
+    color: var(--primary-color); 
+    margin-bottom: 8px; 
+    text-transform: uppercase; 
+}
+
+.section-subtitle { 
+    color: #6b7280; 
+    margin-bottom: 35px; 
+    font-size: 1rem; 
+}
+
+.history-box, .vision-mission-box, .ketua-box {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    padding: 35px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.history-box p { margin-bottom: 15px; text-align: justify; }
+
+.history-highlight {
+    background-color: var(--bg-color);
+    border-left: 5px solid var(--accent-color); 
+    padding: 20px;
+    margin-top: 25px;
+    border-radius: 0 6px 6px 0;
+}
+.history-highlight h4 { color: var(--primary-color); margin-bottom: 8px; }
+
+.vision-card h3, .mission-card h3 { color: var(--accent-color); margin-bottom: 10px; }
+.vision-card p { font-style: italic; font-size: 1.05rem; }
+.divider { margin: 25px 0; border: 0; border-top: 1px solid var(--border-color); }
+.mission-card ol { padding-left: 20px; }
+.mission-card li { margin-bottom: 10px; }
+
+/* Profil Pimpinan Area */
+.ketua-box {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 30px;
+}
+
+.ketua-avatar {
+    background-color: var(--border-color);
+    width: 145px; 
+    height: 145px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    overflow: hidden; 
+    border: 4px solid var(--primary-color); 
+    flex-shrink: 0;
+    margin: 0 auto;
+}
+
+.ketua-img { width: 100%; height: 100%; object-fit: cover; }
+.ketua-info { flex: 1; min-width: 280px; }
+.ketua-info h3 { color: var(--primary-color); font-size: 1.6rem; margin-bottom: 4px; }
+.title-sub { color: var(--accent-color); font-weight: bold; font-size: 0.95rem; margin-bottom: 15px; }
+.ketua-desc { text-align: justify; font-size: 1rem; margin-bottom: 12px; }
+
+/* Data Tables */
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+}
+
+.pengurus-table { width: 100%; border-collapse: collapse; background-color: var(--bg-color); }
+.pengurus-table th, .pengurus-table td { padding: 14px 18px; text-align: left; border-bottom: 1px solid var(--border-color); }
+.pengurus-table th { background-color: var(--primary-color); color: white; font-weight: bold; text-transform: uppercase; font-size: 0.9rem; }
+body.high-contrast .pengurus-table th { background-color: var(--border-color); color: #000000; }
+.pengurus-table tr:nth-child(even) { background-color: var(--card-bg); }
+.table-group-title { background-color: #f1f5f9 !important; }
+body.high-contrast .table-group-title { background-color: #222222 !important; }
+.table-group-title td { font-weight: 800; color: var(--text-color); font-size: 1rem; border-left: 4px solid var(--accent-color); }
+.pengurus-table td small { color: #6b7280; }
+body.high-contrast .pengurus-table td small { color: #ffffff; }
+
+/* Grid Cards Layout Dinamis */
+.cabor-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+.cabor-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    padding: 30px 20px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+
+.cabor-icon { font-size: 2.8rem; margin-bottom: 15px; display: inline-block; }
+.cabor-card h3 { color: var(--primary-color); font-size: 1.3rem; margin-bottom: 12px; }
+.cabor-card p { font-size: 0.95rem; color: #4b5563; line-height: 1.6; }
+body.high-contrast .cabor-card p { color: #ffff00; }
+
+.clickable-card { cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+.clickable-card:hover { transform: translateY(-6px); box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1); }
+.btn-detail-trigger { color: #3498db; font-size: 0.85rem; font-weight: bold; display: block; margin-top: 15px; }
+
+/* Galeri Modifikasi */
+.photo-card { padding: 12px; overflow: hidden; }
+.galeri-img { width: 100%; height: 210px; object-fit: cover; border-radius: 6px; background-color: #e2e8f0; }
+.photo-card h4 { margin: 12px 0 5px 0; color: #1f2937; }
+.photo-card p { font-size: 0.88rem; color: #6b7280; }
+
+/* FAQ Accordion Elements */
+.faq-container { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 15px; }
+.faq-container details { background: var(--card-bg); padding: 15px 20px; border: 1px solid var(--border-color); border-radius: 8px; cursor: pointer; text-align: left;}
+.faq-container summary { font-weight: bold; color: var(--primary-color); font-size: 1rem; }
+.faq-container p { margin-top: 12px; color: #4b5563; line-height: 1.6; text-align: justify; }
+
+/* Sinergi & Sponsor */
+.sponsor-title { text-align: center; font-weight: bold; color: #9ca3af; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; margin-bottom: 25px; }
+.sponsor-flex { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 40px; opacity: 0.6; }
+.sponsor-flex span { font-weight: 800; font-size: 1.1rem; color: #111827; }
+
+/* ==========================================================================
+   CSS INTERFACE COMPONENT WINDOW MODAL POP-UP
+   ========================================================================== */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(15, 23, 42, 0.7); 
+    backdrop-filter: blur(4px); 
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-overlay.active { display: flex; }
+.modal-box {
+    background: #ffffff; padding: 35px 25px; border-radius: 12px; 
+    max-width: 500px; width: 90%; position: relative;
+    box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
+}
+
+.modal-close-btn {
+    position: absolute; top: 15px; right: 15px; background: #f1f5f9; border: none;
+    width: 32px; height: 32px; border-radius: 50%; font-size: 1.2rem; cursor: pointer;
+}
+
+.modal-title { font-size: 1.4rem; color: var(--primary-color); margin: 15px 0; font-weight: 700; }
+.modal-desc { font-size: 0.95rem; color: #4b5563; line-height: 1.6; margin-bottom: 20px; }
+.btn-modal-close { background: var(--primary-color); color: white; padding: 10px 20px; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; }
+
+/* ==========================================================================
+   FOOTER AREA SYSTEM
+   ========================================================================== */
+footer { background-color: var(--footer-bg); color: var(--footer-text); padding: 50px 5% 20px; margin-top: 50px;}
+.footer-container { display: flex; flex-wrap: wrap; gap: 40px; justify-content: space-between; }
+.footer-brand, .footer-links, .footer-contact { flex: 1; min-width: 250px; }
+footer h3, footer h4 { color: white; margin-bottom: 15px; }
+.footer-brand p { font-size: 0.95rem; margin-bottom: 15px; }
+.footer-map { width: 100%; height: 160px; border-radius: 8px; overflow: hidden; }
+.footer-links a { display: block; color: var(--footer-text); text-decoration: none; margin-bottom: 10px; transition: color 0.2s; }
+.footer-links a:hover { color: white; }
+.footer-contact p { font-size: 0.95rem; margin-bottom: 10px; }
+.footer-bottom { text-align: center; padding-top: 25px; border-top: 1px solid #2d3748; margin-top: 35px; font-size: 0.85rem; }
+
+/* TOMBOL WA FLOATING DEFAULT ACCESSIBILITY */
+.btn-wa-mobile {
+    position: fixed; bottom: 25px; right: 25px; background-color: #25d366; color: white; 
+    padding: 12px 22px; border-radius: 50px; text-decoration: none; font-weight: bold; 
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2); z-index: 9998; display: flex; align-items: center; gap: 8px; font-size: 0.9rem;
+}
+
+/* ==========================================================================
+   MEDIA QUERY: SAKTI OPTIMISASI SELURUH TAMPILAN SMARTPHONE (RESPONSIVE) 📱
+   ========================================================================== */
 @media (max-width: 768px) {
     header {
-        flex-direction: column;
-        align-items: center;
-        padding: 15px 10px;
-        background: #ffffff; /* Memastikan header tetap putih bersih */
+        padding: 15px 20px;
     }
 
     .logo {
-        margin-bottom: 15px;
+        font-size: 1.1rem;
     }
 
+    .logo-img {
+        width: 38px;
+    }
+
+    /* Tampilkan tombol hamburger menu di HP */
+    .menu-toggle {
+        display: block;
+    }
+
+    /* Transformasi Navigasi Desktop Menjadi Sidebar Laci (Drawer Sidebar) */
     nav {
+        position: fixed;
+        top: 0;
+        right: -100%; /* Sembunyikan drawer di kanan luar layar */
+        width: 280px;
+        height: 100vh;
+        background-color: var(--bg-color);
+        box-shadow: -6px 0 15px rgba(0,0,0,0.1);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 70px 20px 30px 20px;
+        gap: 10px;
+        transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 5000;
+        overflow-y: auto;
+    }
+
+    /* Class pemicu dari JavaScript untuk membuka laci menu */
+    nav.nav-active {
+        right: 0;
+    }
+
+    /* Munculkan tombol silang tutup menu di dalam laci */
+    .menu-close {
+        display: block;
+        position: absolute;
+        top: 15px;
+        left: 20px;
+        font-size: 2rem;
+    }
+
+    nav a, .dropdown {
         width: 100%;
-        flex-direction: column; /* Membuat menu berjejer rapi vertikal */
-        gap: 5px;
-        background: #ffffff; /* MENGUBAH BACKGROUND MENJADI PUTIH BERSIH */
-        padding: 5px 0;
     }
 
     nav a, .dropdown-btn {
+        display: block;
         width: 100%;
-        text-align: center;
-        padding: 12px;
-        border-bottom: 1px solid #f3f4f6; /* Garis pembatas tipis antar menu biar rapi */
-        border-radius: 0;
+        text-align: left;
+        padding: 14px 10px;
+        border-bottom: 1px solid var(--border-color);
+        font-size: 0.95rem;
     }
 
-    nav a:last-child {
-        border-bottom: none; /* Menghilangkan garis di menu terakhir */
-    }
-
-    .dropdown {
-        width: 100%;
-    }
-
+    /* Hilangkan efek melayang dropdown di HP agar tidak meluber keluar */
     .dropdown-content {
         position: relative;
         box-shadow: none;
         width: 100%;
-        background: #ffffff;
+        border: none;
+        background-color: #f8fafc;
+        padding-left: 15px;
     }
 
+    .dropdown-content a {
+        padding: 10px 12px;
+        font-size: 0.9rem;
+    }
+
+    /* Optimasi Skala Komponen Banner Hero */
     .hero {
-        min-height: 85vh; /* Memperlebar ruang background di HP agar gambar terlihat */
-        padding: 60px 15px;
+        padding: 80px 15px;
+        margin-bottom: 20px;
     }
 
     .hero h1 {
-        font-size: 1.8rem; /* Mengecilkan teks judul di HP agar gambar di belakangnya kelihatan jelas */
+        font-size: 1.75rem;
     }
 
     .hero p {
         font-size: 0.95rem;
     }
 
-    .footer-container {
-        grid-template-columns: 1fr;
-        gap: 30px;
+    .hero-buttons {
+        flex-direction: column;
+        width: 100%;
     }
 
-    /* Memperkecil tombol WhatsApp khusus di Layar HP */
+    .hero-buttons a {
+        display: block;
+        width: 100%;
+        text-align: center;
+        margin-right: 0 !important;
+    }
+
+    /* Grid Otomatis Menjadi 1 Kolom Vertikal Penuh Sesuai Lebar Jari HP */
+    .cabor-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .ketua-box {
+        flex-direction: column;
+        padding: 25px 20px;
+    }
+
+    .history-box, .vision-mission-box {
+        padding: 25px 20px;
+    }
+
+    /* Sinergi Logo menyusun seimbang */
+    .sponsor-flex {
+        gap: 20px;
+    }
+
+    /* Floating WhatsApp Mengecil di HP agar tidak menutup teks penting di bawah */
     .btn-wa-mobile {
-        bottom: 15px !important;
-        right: 15px !important;
-        padding: 8px 14px !important;
-        font-size: 0.8rem !important;
+        bottom: 20px;
+        right: 20px;
+        padding: 10px 16px;
+        font-size: 0.85rem;
+    }
+    
+    .btn-wa-mobile span {
+        display: none; /* Menyembunyikan tulisan "Tanya Admin via WA" di HP, menyisakan icon ikonik bulat saja */
+    }
+    
+    .btn-wa-mobile::after {
+        content: ' Chat'; /* Mengganti teks panjang jadi ringkas agar tidak memakan ruang */
     }
 }
